@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-blue
+  # these labels are replicaset labels
+  labels:
+    project: roboshop
+    tier: frontend
+    component: frontend
+    version: blue
+  annotations:
+    kubernetes.io/change-cause: "moving to 1.29.7"
+spec:
+  replicas: 4
+  selector:
+    # by using these lables replica set select the pod
+    matchLabels:
+      project: roboshop
+      tier: frontend
+      component: frontend
+      version: blue
+  # this is pod , as we know pod is the subset of replicaset
+  template:
+    metadata:
+      labels:
+        project: roboshop
+        tier: frontend
+        component: frontend
+        version: blue
+    spec:
+      containers:
+      - name: nginx-blue
+        image: esrasd/blue:0.0.1
