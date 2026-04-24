@@ -30,4 +30,4 @@ spec:
     spec:
       containers:
       - name: nginx-blue
-        image: esrasd/blue:0.0.1
+        image: esrasd/blue-green:0.0.1
