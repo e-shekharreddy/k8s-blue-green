@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-blue
+  name: nginx-green
   # these labels are replicaset labels
   labels:
     project: roboshop
     tier: frontend
     component: frontend
-    version: blue
+    version: green
 spec:
   replicas: 4
   selector:
@@ -16,7 +16,7 @@ spec:
       project: roboshop
       tier: frontend
       component: frontend
-      version: blue
+      version: green
   # this is pod , as we know pod is the subset of replicaset
   template:
     metadata:
@@ -24,8 +24,8 @@ spec:
         project: roboshop
         tier: frontend
         component: frontend
-        version: blue
+        version: green
     spec:
       containers:
-      - name: nginx-blue
-        image: esrasd/blue-green:0.0.1
+      - name: nginx-green
+        image: esrasd/blue-green:0.0.2
